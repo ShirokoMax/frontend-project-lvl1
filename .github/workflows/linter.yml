@@ -27,4 +27,5 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: eslinter
-        run: npx eslint .
+      - run: npm install
+      - run: make lint
