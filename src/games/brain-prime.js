@@ -6,7 +6,7 @@ function isPrime(number) {
   if (number <= 1) {
     return 'no';
   }
-  if (number % 2 === 0) {
+  if (number > 2 && number % 2 === 0) {
     return 'no';
   }
   const sqrt = Math.sqrt(number);
