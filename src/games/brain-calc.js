@@ -1,48 +1,41 @@
-import readlineSync from 'readline-sync';
-import gameEngine from '../index.js';
+import runGameEngine from '../index.js';
+
+const description = 'What is the result of the expression?';
+
+function calc(operator, number1, number2) {
+  let result;
+
+  switch (operator) {
+    case '+':
+      result = number1 + number2;
+      break;
+    case '-':
+      result = number1 - number2;
+      break;
+    case '*':
+      result = number1 * number2;
+      break;
+    default:
+      throw new Error('This mathematical operator is missing. The operator must be "+", "-" or "*".');
+  }
+  return result;
+}
+
+function runGameLogic() {
+  const mathOperators = ['+', '-', '*'];
+  const randomOperator = mathOperators[Math.floor(Math.random() * 3)];
+  const question = `${Math.ceil(Math.random() * 20)} ${randomOperator} ${Math.ceil(Math.random() * 20)}`;
+  const numbers = question.split(randomOperator);
+  const number1 = Number(numbers[0]);
+  const number2 = Number(numbers[1]);
+  const rightAnswer = calc(randomOperator, number1, number2);
+
+  return {
+    question,
+    rightAnswer,
+  };
+}
 
 export default function runBrainCalc() {
-  const firstPhrase = 'What is the result of the expression?';
-
-  function evalExpression(string, symbol) {
-    const array = string.split(symbol);
-    let result;
-
-    switch (symbol) {
-      case '+':
-        result = Number(array[0]) + Number(array[1]);
-        break;
-      case '-':
-        result = Number(array[0]) - Number(array[1]);
-        break;
-      case '*':
-        result = Number(array[0]) * Number(array[1]);
-        break;
-      default:
-        result = null;
-    }
-    return result;
-  }
-
-  function gameLogic(userName) {
-    const mathSymbols = ['+', '-', '*'];
-    const randomSymbol = mathSymbols[Math.floor(Math.random() * 3)];
-    const expression = `${Math.ceil(Math.random() * 20)} ${randomSymbol} ${Math.ceil(Math.random() * 20)}`;
-    const rightAnswer = evalExpression(expression, randomSymbol);
-    console.log(`Question: ${expression}`);
-    const answer = readlineSync.question('Your answer: ');
-    let result;
-
-    if (Number(answer) === rightAnswer) {
-      console.log('Correct!');
-      result = true;
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
-      result = false;
-    }
-    return result;
-  }
-
-  gameEngine(firstPhrase, gameLogic);
+  runGameEngine(description, runGameLogic);
 }

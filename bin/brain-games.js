@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import startGame from '../src/cli.js';
+import runGameIntro from '../src/cli.js';
 
-startGame();
+runGameIntro();

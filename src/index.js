@@ -1,21 +1,27 @@
-import gameIntro from './cli.js';
+import readlineSync from 'readline-sync';
+import runGameIntro from './cli.js';
 
-export default function gameEngine(firstPhrase, gameLogic) {
-  const userName = gameIntro();
+export default function runGameEngine(description, runGameLogic) {
+  const userName = runGameIntro();
 
-  console.log(firstPhrase);
+  console.log(description);
 
   let counter = 0;
-  let wrongAnswer = false;
-  while (counter < 3 && !wrongAnswer) {
-    if (gameLogic(userName) === true) {
+  while (counter < 3) {
+    const { question, rightAnswer } = runGameLogic();
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    const isAnswerNumber = typeof rightAnswer;
+
+    if (isAnswerNumber === 'number' ? Number(userAnswer) === rightAnswer : userAnswer === rightAnswer) {
       counter += 1;
+      console.log('Correct!');
     } else {
-      wrongAnswer = true;
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
     }
   }
 
-  if (counter === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  console.log(`Congratulations, ${userName}!`);
 }
