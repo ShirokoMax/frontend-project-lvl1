@@ -2,29 +2,28 @@ import runGameEngine from '../index.js';
 
 const description = 'What is the result of the expression?';
 
-function calc(operator, number1, number2) {
-  let result;
-
+const calc = (operator, number1, number2) => {
   switch (operator) {
     case '+':
-      result = number1 + number2;
-      break;
+      return number1 + number2;
     case '-':
-      result = number1 - number2;
-      break;
+      return number1 - number2;
     case '*':
-      result = number1 * number2;
-      break;
+      return number1 * number2;
     default:
       throw new Error('This mathematical operator is missing. The operator must be "+", "-" or "*".');
   }
-  return result;
-}
+};
 
-function runGameLogic() {
+const randomInteger = (min, max) => {
+  const rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+};
+
+const genRound = () => {
   const mathOperators = ['+', '-', '*'];
-  const randomOperator = mathOperators[Math.floor(Math.random() * 3)];
-  const question = `${Math.ceil(Math.random() * 20)} ${randomOperator} ${Math.ceil(Math.random() * 20)}`;
+  const randomOperator = mathOperators[randomInteger(0, 2)];
+  const question = `${randomInteger(1, 20)} ${randomOperator} ${randomInteger(1, 20)}`;
   const numbers = question.split(randomOperator);
   const number1 = Number(numbers[0]);
   const number2 = Number(numbers[1]);
@@ -34,8 +33,10 @@ function runGameLogic() {
     question,
     rightAnswer,
   };
-}
+};
 
-export default function runBrainCalc() {
-  runGameEngine(description, runGameLogic);
-}
+const runBrainCalc = () => {
+  runGameEngine(description, genRound);
+};
+
+export default runBrainCalc;

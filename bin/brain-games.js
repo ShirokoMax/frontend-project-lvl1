@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import runGameIntro from '../src/cli.js';
+import queryUserName from '../src/cli.js';
 
-runGameIntro();
+queryUserName();
