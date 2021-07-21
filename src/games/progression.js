@@ -21,7 +21,7 @@ const createProgression = () => {
 
 const genRound = () => {
   const prog = createProgression();
-  const randomIndex = randomInteger(0, prog.length);
+  const randomIndex = randomInteger(0, prog.length - 1);
   const rightAnswer = prog[randomIndex];
   prog[randomIndex] = '..';
   const question = prog.join(' ');
