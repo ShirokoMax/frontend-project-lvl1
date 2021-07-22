@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import queryUserName from '../src/cli.js';
+import runGreetings from '../src/cli.js';
 
-queryUserName();
+runGreetings();

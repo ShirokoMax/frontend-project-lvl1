@@ -1,4 +1,5 @@
 import runGameEngine from '../index.js';
+import randomInteger from '../utils.js';
 
 const description = 'What is the result of the expression?';
 
@@ -13,11 +14,6 @@ const calc = (operator, number1, number2) => {
     default:
       throw new Error('This mathematical operator is missing. The operator must be "+", "-" or "*".');
   }
-};
-
-const randomInteger = (min, max) => {
-  const rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
 };
 
 const genRound = () => {

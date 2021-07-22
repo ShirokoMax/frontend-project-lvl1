@@ -1,4 +1,5 @@
 import runGameEngine from '../index.js';
+import randomInteger from '../utils.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
@@ -11,11 +12,6 @@ const gcd = (number1, number2) => {
     x = t;
   }
   return x;
-};
-
-const randomInteger = (min, max) => {
-  const rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
 };
 
 const genRound = () => {

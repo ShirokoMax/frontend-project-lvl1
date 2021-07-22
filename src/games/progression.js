@@ -1,11 +1,7 @@
 import runGameEngine from '../index.js';
+import randomInteger from '../utils.js';
 
 const description = 'What number is missing in the progression?';
-
-const randomInteger = (min, max) => {
-  const rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
-};
 
 const createProgression = () => {
   const commonDiff = randomInteger(1, 6);
