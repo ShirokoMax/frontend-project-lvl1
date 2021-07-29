@@ -1,14 +1,13 @@
 import runGameEngine from '../index.js';
-import randomInteger from '../utils.js';
+import genRandomInteger from '../utils.js';
 
 const description = 'What number is missing in the progression?';
 
-const createProgression = () => {
-  const commonDiff = randomInteger(1, 6);
-  const progLength = randomInteger(1, 6) + 4;
 
+
+const createProgression = (firstNum, commonDiff, progLength) => {
   const prog = [];
-  prog.push(randomInteger(1, 50));
+  prog.push(firstNum);
   for (let i = 1; i < progLength; i += 1) {
     prog.push(prog[i - 1] + commonDiff);
   }
@@ -16,9 +15,13 @@ const createProgression = () => {
 };
 
 const genRound = () => {
-  const prog = createProgression();
-  const randomIndex = randomInteger(0, prog.length - 1);
-  const rightAnswer = prog[randomIndex];
+  const firstNum = genRandomInteger(1, 50);
+  const commonDiff = genRandomInteger(1, 6);
+  const progLength = genRandomInteger(1, 6) + 4;
+  const prog = createProgression(firstNum, commonDiff, progLength);
+
+  const randomIndex = genRandomInteger(0, prog.length - 1);
+  const rightAnswer = String(prog[randomIndex]);
   prog[randomIndex] = '..';
   const question = prog.join(' ');
 

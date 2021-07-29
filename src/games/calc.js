@@ -1,5 +1,5 @@
 import runGameEngine from '../index.js';
-import randomInteger from '../utils.js';
+import genRandomInteger from '../utils.js';
 
 const description = 'What is the result of the expression?';
 
@@ -18,12 +18,12 @@ const calc = (operator, number1, number2) => {
 
 const genRound = () => {
   const mathOperators = ['+', '-', '*'];
-  const randomOperator = mathOperators[randomInteger(0, 2)];
-  const question = `${randomInteger(1, 20)} ${randomOperator} ${randomInteger(1, 20)}`;
+  const randomOperator = mathOperators[genRandomInteger(0, mathOperators.length - 1)];
+  const question = `${genRandomInteger(1, 20)} ${randomOperator} ${genRandomInteger(1, 20)}`;
   const numbers = question.split(randomOperator);
   const number1 = Number(numbers[0]);
   const number2 = Number(numbers[1]);
-  const rightAnswer = calc(randomOperator, number1, number2);
+  const rightAnswer = String(calc(randomOperator, number1, number2));
 
   return {
     question,

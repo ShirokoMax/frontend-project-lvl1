@@ -3,6 +3,8 @@
 
 [![CI](https://github.com/ShirokoMax/frontend-project-lvl1/actions/workflows/linter.yml/badge.svg)](https://github.com/ShirokoMax/frontend-project-lvl1/actions/workflows/linter.yml)
 
+[![codeclimate](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+
 ---
 
 #### brain-even:
