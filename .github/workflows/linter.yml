@@ -11,11 +11,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: npm install
-
-      - name: run ESLinter
-      - run: make lint
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - run: npm install
+    - run: make lint
