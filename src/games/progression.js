@@ -3,8 +3,6 @@ import genRandomInteger from '../utils.js';
 
 const description = 'What number is missing in the progression?';
 
-
-
 const createProgression = (firstNum, commonDiff, progLength) => {
   const prog = [];
   prog.push(firstNum);
